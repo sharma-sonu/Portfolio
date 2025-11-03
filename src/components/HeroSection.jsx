@@ -22,7 +22,7 @@ const HeroSection = () => {
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start mt-6 space-x-6">
             <a
-              href="https://github.com/"
+              href="https://github.com/sharma-sonu"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-yellow-200 text-black rounded-full hover:bg-yellow-300 transition"
@@ -30,7 +30,7 @@ const HeroSection = () => {
               <FaGithub size={22} />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/sonu-sharma-491672205/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-blue-500 rounded-full hover:bg-blue-600 transition"
@@ -38,7 +38,7 @@ const HeroSection = () => {
               <FaLinkedin size={22} />
             </a>
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/sonu_sharma_1806/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-pink-500 rounded-full hover:bg-pink-600 transition"

@@ -1,7 +1,7 @@
 import HeroSection from "../components/HeroSection";
 import About from "../components/About";
 import Projects from "../components/Projects";
-import Certifications from "../pages/Certifications"
+import Certifications from "../components/Certifications"
 
 
 const Home = () => {
