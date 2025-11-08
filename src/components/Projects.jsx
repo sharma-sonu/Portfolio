@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
+import { motion } from "framer-motion"; // Import for animation effects
+import { FaGithub } from "react-icons/fa"; // GitHub icon
 
+// Main component for Projects section
 const Projects = () => {
+  // 🔹 Academic Projects data (IoT + Research)
   const academicProjects = [
     {
       title: "Water Level Prediction System",
@@ -18,11 +20,12 @@ const Projects = () => {
       description:
         "A minor IoT project using Arduino and pulse sensor for real-time heart rate detection.",
       github: "https://github.com/yourusername/heart-rate-monitor",
-      image: "/src/assets/images/heart-rate.jpg",
-      research: "/src/assets/pdfs/Heart_Rate_Monitoring_System_Research.pdf",
+      image: "/src/assets/images/HBMS.png",
+      research: "/src/assets/pdfs/ProjectReport.pdf",
     },
   ];
 
+  // 🔹 Personal Projects data (React + Java)
   const personalProjects = [
     {
       title: "Portfolio Website",
@@ -47,189 +50,103 @@ const Projects = () => {
     },
   ];
 
+  // 🔹 Animation variants for smooth appearance using Framer Motion
   const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    hidden: { opacity: 0, y: 40 }, // start state (invisible and moved down)
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }, // visible state
   };
 
+  // 🔹 Reusable Card component — used for all project cards
+  const Card = ({ title, description, image, github }) => (
+    <motion.div
+      variants={cardVariants} // Apply animation
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }} // Animate only once when visible
+      className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
+    >
+      {/* Project Image */}
+      <img
+        src={image}
+        alt={title}
+        className="rounded-xl w-full h-56 object-cover mb-4 border border-white/20"
+      />
+
+      {/* Title and Description */}
+      <div>
+        <h4 className="text-2xl font-bold text-yellow-300 mb-2">{title}</h4>
+        <p className="text-gray-300 mb-4 text-sm leading-relaxed">{description}</p>
+      </div>
+
+      {/* GitHub Button */}
+      <a
+        href={github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-300 transition w-full mt-auto"
+      >
+        <FaGithub /> View on GitHub
+      </a>
+    </motion.div>
+  );
+
+  // 🔹 Reusable PDF frame component for showing PDF files (like certificate, research, patent)
+  const PdfFrame = ({ src, title }) => (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
+    >
+      {/* Embedded PDF viewer inside a frame */}
+      <iframe
+        src={src}
+        title={title}
+        className="w-full h-64 rounded-xl border border-white/20 shadow-md"
+      ></iframe>
+    </motion.div>
+  );
+
+  // 🔹 Return JSX layout for Projects section
   return (
     <section className="min-h-screen bg-gradient-to-b from-[#1e0b59] to-[#2a155f] py-20 text-white">
       <div className="container mx-auto px-6 text-center">
-        {/* Section Title */}
-        <h2 className="text-4xl font-bold text-yellow-300 mb-12">
-          My Projects
-        </h2>
+        {/* Main Section Heading */}
+        <h2 className="text-4xl font-bold text-yellow-300 mb-12">My Projects</h2>
 
-        {/* 🎓 Academic Projects */}
+        {/* 🎓 Academic Projects Section */}
         <h3 className="text-3xl font-semibold text-purple-300 mb-6">
           🎓 Academic Projects
         </h3>
 
-        {/* Water Level Project Grid */}
+        {/* Grid for Water Level Prediction System */}
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-16">
-          {/* Water Level Image */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-          >
-            <img
-              src={academicProjects[0].image}
-              alt={academicProjects[0].title}
-              className="rounded-xl w-full h-56 object-cover mb-4 border border-white/20"
-            />
-            <div>
-              <h4 className="text-2xl font-bold text-yellow-300 mb-2">
-                {academicProjects[0].title}
-              </h4>
-              <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-                {academicProjects[0].description}
-              </p>
-            </div>
-            <a
-              href={academicProjects[0].github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-300 transition w-full mt-auto"
-            >
-              <FaGithub /> View on GitHub
-            </a>
-          </motion.div>
-
-          {/* Research Paper */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-          >
-            <iframe
-              src={academicProjects[0].research}
-              title="Research Paper"
-              className="w-full h-64 rounded-xl border border-white/20 shadow-md"
-            ></iframe>
-          </motion.div>
-
-          {/* Certificate */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-          >
-            <iframe
-              src={academicProjects[0].certificate}
-              title="Certificate"
-              className="w-full h-64 rounded-xl border border-white/20 shadow-md"
-            ></iframe>
-          </motion.div>
-
-          {/* Patent */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-          >
-            <iframe
-              src={academicProjects[0].patent}
-              title="Patent"
-              className="w-full h-64 rounded-xl border border-white/20 shadow-md"
-            ></iframe>
-          </motion.div>
+          {/* Project card */}
+          <Card {...academicProjects[0]} />
+          {/* Research paper PDF */}
+          <PdfFrame src={academicProjects[0].research} title="Research Paper" />
+          {/* Certificate PDF */}
+          <PdfFrame src={academicProjects[0].certificate} title="Certificate" />
+          {/* Patent PDF */}
+          <PdfFrame src={academicProjects[0].patent} title="Patent" />
         </div>
 
-        {/* Heart Rate Monitoring Project */}
+        {/* Grid for Heart Rate Monitoring System */}
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-16 justify-center">
-          {/* Heart Rate Image */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-          >
-            <img
-              src={academicProjects[1].image}
-              alt={academicProjects[1].title}
-              className="rounded-xl w-full h-56 object-cover mb-4 border border-white/20"
-            />
-            <div>
-              <h4 className="text-2xl font-bold text-yellow-300 mb-2">
-                {academicProjects[1].title}
-              </h4>
-              <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-                {academicProjects[1].description}
-              </p>
-            </div>
-            <a
-              href={academicProjects[1].github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-300 transition w-full mt-auto"
-            >
-              <FaGithub /> View on GitHub
-            </a>
-          </motion.div>
-
-          {/* Heart Rate Research Paper */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-          >
-            <iframe
-              src={academicProjects[1].research}
-              title="Heart Rate Research Paper"
-              className="w-full h-64 rounded-xl border border-white/20 shadow-md"
-            ></iframe>
-          </motion.div>
+          <Card {...academicProjects[1]} />
+          <PdfFrame src={academicProjects[1].research} title="Heart Rate Research Paper" />
         </div>
 
-        {/* 💻 Personal Projects */}
+        {/* 💻 Personal Projects Section */}
         <h3 className="text-3xl font-semibold text-purple-300 mb-6">
           💻 Personal Projects
         </h3>
 
+        {/* Grid for personal projects */}
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8">
-          {personalProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="rounded-xl w-full h-56 object-cover mb-4 border border-white/20"
-              />
-              <div>
-                <h4 className="text-2xl font-bold text-yellow-300 mb-2">
-                  {project.title}
-                </h4>
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-300 transition w-full mt-auto"
-              >
-                <FaGithub /> View on GitHub
-              </a>
-            </motion.div>
+          {personalProjects.map((p, i) => (
+            <Card key={i} {...p} />
           ))}
         </div>
       </div>
@@ -237,4 +154,5 @@ const Projects = () => {
   );
 };
 
+// Export component
 export default Projects;

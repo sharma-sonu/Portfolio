@@ -7,8 +7,9 @@ import Certifications from "../components/Certifications"
 const Home = () => {
   return (
     <>
-    {/* <About/> */}
-      <HeroSection />
+
+       <HeroSection />
+       <About/>
        <Projects />
        <Certifications />
     </>
