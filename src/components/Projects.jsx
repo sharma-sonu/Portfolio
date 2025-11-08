@@ -8,17 +8,18 @@ const Projects = () => {
       description:
         "An IoT-based project that estimates water level in storage tanks and predicts usage time.",
       github: "https://github.com/yourusername/water-level-system",
-      image: "/images/water-level.jpg",
-      certificate: "/pdfs/904437_Certi.pdf",
-      research: "/pdfs/22988001.Estimating water level in storage tank.pdf",
-      patent: "/pdfs/22988001.Estimating water level in storage tank.pdf",
+      image: "/src/assets/images/EWSTPUT.jpg",
+      certificate: "/src/assets/pdfs/904437_Certi.pdf",
+      research: "/src/assets/pdfs/22988001.Estimating water level in storage tank.pdf",
+      patent: "/src/assets/pdfs/22988001.Estimating water level in storage tank.pdf",
     },
     {
       title: "Heart Rate Monitoring System",
       description:
         "A minor IoT project using Arduino and pulse sensor for real-time heart rate detection.",
       github: "https://github.com/yourusername/heart-rate-monitor",
-      image: "/images/heart-rate.jpg",
+      image: "/src/assets/images/heart-rate.jpg",
+      research: "/src/assets/pdfs/Heart_Rate_Monitoring_System_Research.pdf",
     },
   ];
 
@@ -28,21 +29,21 @@ const Projects = () => {
       description:
         "My personal responsive portfolio showcasing projects, certifications, and journey.",
       github: "https://github.com/yourusername/portfolio",
-      image: "/images/portfolio.jpg",
+      image: "/src/assets/images/portfolio.jpg",
     },
     {
       title: "Quiz Platform",
       description:
         "An interactive quiz web app with teacher-student interface and timer support.",
       github: "https://github.com/yourusername/quiz-platform",
-      image: "/images/quiz-platform.jpg",
+      image: "/src/assets/images/quiz-platform.jpg",
     },
     {
       title: "Receipt Calculator",
       description:
         "A Java-based GUI application to generate and save customer receipts.",
       github: "https://github.com/yourusername/receipt-calculator",
-      image: "/images/receipt-calculator.jpg",
+      image: "/src/assets/images/receipt-calculator.jpg",
     },
   ];
 
@@ -64,8 +65,9 @@ const Projects = () => {
           🎓 Academic Projects
         </h3>
 
+        {/* Water Level Project Grid */}
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-16">
-          {/* Water Level Prediction Project */}
+          {/* Water Level Image */}
           <motion.div
             variants={cardVariants}
             initial="hidden"
@@ -96,22 +98,7 @@ const Projects = () => {
             </a>
           </motion.div>
 
-          {/* Certificate PDF */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
-          >
-            <iframe
-              src={academicProjects[0].certificate}
-              title="Certificate"
-              className="w-full h-64 rounded-xl border border-white/20 shadow-md"
-            ></iframe>
-          </motion.div>
-
-          {/* Research Paper PDF */}
+          {/* Research Paper */}
           <motion.div
             variants={cardVariants}
             initial="hidden"
@@ -126,7 +113,22 @@ const Projects = () => {
             ></iframe>
           </motion.div>
 
-          {/* Patent PDF */}
+          {/* Certificate */}
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
+          >
+            <iframe
+              src={academicProjects[0].certificate}
+              title="Certificate"
+              className="w-full h-64 rounded-xl border border-white/20 shadow-md"
+            ></iframe>
+          </motion.div>
+
+          {/* Patent */}
           <motion.div
             variants={cardVariants}
             initial="hidden"
@@ -140,8 +142,11 @@ const Projects = () => {
               className="w-full h-64 rounded-xl border border-white/20 shadow-md"
             ></iframe>
           </motion.div>
+        </div>
 
-          {/* Heart Rate Monitoring Project */}
+        {/* Heart Rate Monitoring Project */}
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-16 justify-center">
+          {/* Heart Rate Image */}
           <motion.div
             variants={cardVariants}
             initial="hidden"
@@ -170,6 +175,21 @@ const Projects = () => {
             >
               <FaGithub /> View on GitHub
             </a>
+          </motion.div>
+
+          {/* Heart Rate Research Paper */}
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
+          >
+            <iframe
+              src={academicProjects[1].research}
+              title="Heart Rate Research Paper"
+              className="w-full h-64 rounded-xl border border-white/20 shadow-md"
+            ></iframe>
           </motion.div>
         </div>
 
