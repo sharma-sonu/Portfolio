@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
 // ✅ Import all images
-import EWSTPUT from "../assets/images/EWSTPUT.jpg";
-import HBMS from "../assets/images/HBMS.png";
+import EWSTPUT from "../assets/images/Estimating.jpg";
+import HBMS from "../assets/images/Heart.png";
 import portfolioImg from "../assets/images/portfolio.jpg";
 import quizPlatform from "../assets/images/quiz-platform.jpg";
 import atmMachine from "../assets/images/ATMMachine.jpeg";
