@@ -1,10 +1,11 @@
-// src/components/JourneyTimeline.jsx
+// ✅ src/components/JourneyTimeline.jsx
 import { motion } from "framer-motion";
 import { useState } from "react";
 
 const JourneyTimeline = () => {
-  const [activeSubTab, setActiveSubTab] = useState("education");
+  const [activeTab, setActiveTab] = useState("education");
 
+  // 🔹 All Journey Data (Grouped)
   const journeyData = {
     education: [
       {
@@ -51,7 +52,7 @@ const JourneyTimeline = () => {
         year: "2024",
         title: "Certifications",
         place: "Cisco | Coursera | LinkedIn Learning",
-        desc: "Completed multiple courses in Networking, Web Dev, and IoT.",
+        desc: "Completed courses in Networking, Web Dev, and IoT.",
       },
     ],
     project: [
@@ -65,58 +66,62 @@ const JourneyTimeline = () => {
         year: "2024",
         title: "Receipt Calculator",
         place: "Java Swing Project",
-        desc: "Built a calculator with billing and print functionality.",
+        desc: "Built calculator with billing and print functionality.",
       },
       {
         year: "2023",
         title: "Heart Rate Monitoring System",
         place: "Arduino Project",
-        desc: "Designed IoT system for health monitoring.",
+        desc: "Designed IoT-based system for health monitoring.",
       },
     ],
   };
 
+  // 🔹 Sub Tabs
+  const tabs = [
+    { id: "education", label: "Educational Journey" },
+    { id: "experience", label: "Experience Journey" },
+    { id: "technical", label: "Technical Journey" },
+    { id: "project", label: "Project Journey" },
+  ];
+
   return (
     <div className="mt-8">
-      {/* Sub Tabs */}
+      {/* 🔸 Sub Tab Buttons */}
       <div className="flex justify-center gap-3 mb-8 flex-wrap">
-        {[
-          { id: "education", label: "Educational Journey" },
-          { id: "experience", label: "Experience Journey" },
-          { id: "technical", label: "Technical Journey" },
-          { id: "project", label: "Project Journey" },
-        ].map((tab) => (
+        {tabs.map(({ id, label }) => (
           <motion.button
-            key={tab.id}
-            onClick={() => setActiveSubTab(tab.id)}
+            key={id}
             whileHover={{ scale: 1.05 }}
-            className={`px-4 py-2 rounded-lg font-medium ${
-              activeSubTab === tab.id
+            onClick={() => setActiveTab(id)}
+            className={`px-4 py-2 rounded-lg font-medium transition ${
+              activeTab === id
                 ? "bg-yellow-400 text-black"
                 : "bg-white/10 text-white hover:bg-white/20"
             }`}
           >
-            {tab.label}
+            {label}
           </motion.button>
         ))}
       </div>
 
-      {/* Timeline */}
+      {/* 🔸 Timeline */}
       <div className="relative max-w-5xl mx-auto">
-        {/* Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-yellow-400 to-purple-500 h-full rounded-full"></div>
+        {/* Center Line */}
+        <div className="absolute left-1/2 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-yellow-400 to-purple-500 rounded-full" />
 
-        {journeyData[activeSubTab].map((item, index) => (
+        {journeyData[activeTab].map((item, index) => (
           <motion.div
             key={index}
             className={`mb-12 flex ${
               index % 2 === 0 ? "justify-start" : "justify-end"
             } w-full`}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
           >
-            <div className="bg-purple-900/70 border border-purple-400 rounded-xl shadow-lg text-left w-[90%] md:w-[45%] p-6 relative">
+            {/* Card */}
+            <div className="relative w-[90%] md:w-[45%] bg-purple-900/70 border border-purple-400 rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-yellow-300">
                 {item.title}
               </h3>
@@ -125,7 +130,9 @@ const JourneyTimeline = () => {
               <span className="absolute text-sm text-gray-400 right-4 top-4">
                 {item.year}
               </span>
-              <div className="absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-yellow-400 border-4 border-purple-900 left-[100%] md:left-auto md:right-[-13px] flex items-center justify-center">
+
+              {/* Timeline Dot */}
+              <div className="absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-yellow-400 border-4 border-purple-900 md:right-[-13px] flex items-center justify-center">
                 <span className="text-purple-900 font-bold">★</span>
               </div>
             </div>
