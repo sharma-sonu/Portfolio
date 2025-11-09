@@ -1,30 +1,52 @@
-import React from "react";
+import { motion } from "framer-motion";
+import { FaDownload } from "react-icons/fa";
+import resumePDF from "../assets/pdfs/Resume_IT.pdf";
 
 const Resume = () => {
+  // Framer Motion animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#1e0b59] to-[#2a155f] text-white p-6">
-      <h2 className="text-3xl font-semibold text-yellow-300 mb-6">
-        My Resume
-      </h2>
-
-      {/* PDF viewer */}
-      <div className="w-full max-w-5xl h-[90vh] bg-white rounded-xl shadow-lg overflow-hidden">
-        <iframe
-          src="/src/assets/pdfs/Resume_IT.pdf"
-          className="w-full h-full border-none"
-          title="Sonu Sharma Resume"
-        ></iframe>
-      </div>
-
-      {/* ✅ Only Download Button */}
-      <a
-        href="/Resume_IT.pdf"
-        download="Sonu_Sharma_Resume.pdf"
-        className="mt-6 bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition-all duration-300"
+    <section className="min-h-screen bg-gradient-to-b from-[#1e0b59] to-[#2a155f] flex flex-col items-center justify-center text-white px-4 py-20">
+      {/* Title */}
+      <motion.h2
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        className="text-4xl font-bold text-yellow-300 mb-10 text-center"
       >
-        Download Resume
-      </a>
-    </div>
+        My Resume
+      </motion.h2>
+
+      {/* Resume PDF Viewer */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        className="w-full max-w-5xl bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:shadow-yellow-400/40 transition"
+      >
+        <iframe
+          src={`${resumePDF}#page=1&toolbar=0&navpanes=0&scrollbar=0`}
+          title="Sonu Sharma Resume"
+          className="w-full h-[80vh] rounded-xl border border-white/20 shadow-md"
+        ></iframe>
+      </motion.div>
+
+      {/* Download Button */}
+      <motion.a
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        href={resumePDF}
+        download="Sonu_Sharma_Resume.pdf"
+        className="mt-8 inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-all duration-300 shadow-lg"
+      >
+        <FaDownload /> Download Resume
+      </motion.a>
+    </section>
   );
 };
 

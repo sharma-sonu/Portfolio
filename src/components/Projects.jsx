@@ -1,20 +1,20 @@
 import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaDownload } from "react-icons/fa";
 
-// ✅ Import all images
+// ✅ Import images
 import Estimating from "../assets/images/Estimating.jpg";
 import Heart from "../assets/images/Heart.png";
 import portfolioImg from "../assets/images/portfolio.png";
 import calculator from "../assets/images/Calculator.jpeg";
 
-// ✅ Import all PDFs
+// ✅ Import PDFs
 import waterCert from "../assets/pdfs/904437_Certi.pdf";
 import waterResearch from "../assets/pdfs/22988001.Estimating water level in storage tank.pdf";
 import waterPatent from "../assets/pdfs/22988001.Estimating water level in storage tank.pdf";
 import heartResearch from "../assets/pdfs/ProjectReport.pdf";
 
 const Projects = () => {
-  // 🔹 Academic Projects data (IoT + Research)
+  // 🔹 Academic Projects
   const academicProjects = [
     {
       title: "Water Level Prediction System",
@@ -38,7 +38,7 @@ const Projects = () => {
     },
   ];
 
-  // 🔹 Personal Projects data (React + Java)
+  // 🔹 Personal Projects
   const personalProjects = [
     {
       title: "Portfolio Website",
@@ -50,13 +50,13 @@ const Projects = () => {
     {
       title: "Receipt Calculator",
       description:
-        "Developed a receipt Calculator where it Calculate, Tax price, Deduction ",
+        "Developed a receipt calculator that computes total, tax, and discount with receipt generation.",
       github: "https://github.com/sharma-sonu/Receipt_Calculator",
       image: calculator,
     },
   ];
 
-  // 🔹 Animation variants for Framer Motion
+  // 🔹 Motion Variants
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -75,6 +75,7 @@ const Projects = () => {
         src={image}
         alt={title}
         className="rounded-xl w-full h-56 object-cover mb-4 border border-white/20"
+        loading="lazy"
       />
       <div>
         <h4 className="text-2xl font-bold text-yellow-300 mb-2">{title}</h4>
@@ -93,7 +94,7 @@ const Projects = () => {
     </motion.div>
   );
 
-  // 🔹 PDF Frame Component
+  // 🔹 PDF Frame Component (first page + download)
   const PdfFrame = ({ src, title }) => (
     <motion.div
       variants={cardVariants}
@@ -102,18 +103,28 @@ const Projects = () => {
       viewport={{ once: true }}
       className="bg-white/10 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-400/40 transition flex flex-col justify-between"
     >
+      {/* Show only first page of PDF */}
       <iframe
-        src={src}
+        src={`${src}#page=1&toolbar=0&navpanes=0&scrollbar=0`}
         title={title}
-        className="w-full h-64 rounded-xl border border-white/20 shadow-md"
+        className="w-full h-64 rounded-xl border border-white/20 shadow-md mb-4"
       ></iframe>
+
+      {/* Download Button */}
+      <a
+        href={src}
+        download
+        className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-300 transition"
+      >
+        <FaDownload /> Download PDF
+      </a>
     </motion.div>
   );
 
   // 🔹 Layout
   return (
     <section className="min-h-screen bg-gradient-to-b from-[#1e0b59] to-[#2a155f] py-20 text-white">
-      <div className="container mx-auto px-6 text-center">
+      <div className="container mx-auto px-4 md:px-10 text-center">
         <h2 className="text-4xl font-bold text-yellow-300 mb-12">My Projects</h2>
 
         {/* 🎓 Academic Projects Section */}
@@ -121,14 +132,15 @@ const Projects = () => {
           🎓 Academic Projects
         </h3>
 
+        {/* Water Level Project */}
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-16">
           <Card {...academicProjects[0]} />
           <PdfFrame src={academicProjects[0].research} title="Research Paper" />
           <PdfFrame src={academicProjects[0].certificate} title="Certificate" />
-          <PdfFrame src={academicProjects[0].patent} title="Patent" />
         </div>
 
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-16 justify-center">
+        {/* Heart Monitoring Project */}
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 mb-16">
           <Card {...academicProjects[1]} />
           <PdfFrame
             src={academicProjects[1].research}
