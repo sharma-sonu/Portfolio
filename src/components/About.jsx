@@ -65,8 +65,7 @@ const About = () => {
                   <span className="text-yellow-300">IoT</span>.
                 </p>
                 <p className="text-gray-400">
-                  I build projects like Quiz App, Portfolio Website, and Heart
-                  Rate Monitoring System using Arduino and modern web tools.
+                  I build projects like Quiz App, Portfolio Website, and IoT-Based Water Level Monitoring System and Predicting usage Time and modern web tools.
                 </p>
                 <p className="text-purple-400 italic">
                   “Turning ideas into functional and elegant digital solutions.”

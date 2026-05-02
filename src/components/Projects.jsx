@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaDownload } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 // ✅ Import images (keep these in src/assets)
 import Estimating from "../assets/images/Estimating.jpg";
 import Heart from "../assets/images/Heart.png";
 import portfolioImg from "../assets/images/portfolio.png";
 import calculator from "../assets/images/Calculator.jpeg";
+import QuizApp from "../assets/images/QuizApp.png"
 
 // ✅ PDF paths (served from public folder)
 const waterCert = "/pdfs/904437_Certi.pdf";
 const waterResearch = "/pdfs/22988001.Estimating-water-level-in-storage-tank.pdf";
-const waterPatent = "/pdfs/22988001.Estimating-water-level-in-storage-tank.pdf";
 const heartResearch = "/pdfs/ProjectReport.pdf";
+
+// ✅ External link for IJDRT
+const ijrdtLink = "https://www.ijrdt.org/see_album_all_paper/10142/Issue-5-Nov-2024";
 
 const Projects = () => {
   // 🔹 Academic Projects
@@ -25,7 +28,6 @@ const Projects = () => {
       image: Estimating,
       certificate: waterCert,
       research: waterResearch,
-      patent: waterPatent,
     },
     {
       title: "Heart Rate Monitoring System",
@@ -47,6 +49,14 @@ const Projects = () => {
       github: "https://github.com/sharma-sonu/Sonu_Portfolio",
       image: portfolioImg,
     },
+      {
+      title: "QuizApp",
+      description:
+        "👉 Developed a full-stack Quiz Application using React, Node.js, Express.js, and MongoDB to enable interactive quizzes, score tracking, and user performance analysis.",
+      github: "https://quiz-platform-six-chi.vercel.app/",
+      image: QuizApp,
+    },
+    
     {
       title: "Receipt Calculator",
       description:
@@ -110,11 +120,12 @@ const Projects = () => {
       ></iframe>
 
       <a
-        href={src}
-        download
+        href={ijrdtLink}
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-300 transition"
       >
-        <FaDownload /> Download PDF
+        <FaExternalLinkAlt /> View PDF
       </a>
     </motion.div>
   );

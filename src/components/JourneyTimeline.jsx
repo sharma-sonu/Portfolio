@@ -11,46 +11,47 @@ const JourneyTimeline = () => {
         year: "2021 - 2025",
         title: "Bachelor of Technology (ECE)",
         place: "Oriental Institute of Science & Technology, Bhopal",
-        desc: "Pursuing B.Tech in Electronics and Communication Engineering.",
+        desc: "Completed B.Tech in Electronics and Communication Engineering.",
       },
       {
         year: "2018 - 2020",
         title: "Intermediate (12th)",
         place: "M.K. College, Darbhanga",
-        desc: "Secured 74% in PCM stream.",
+        // desc: "Secured 74% in PCM stream.",
       },
       {
         year: "2017 - 2018",
         title: "Matric (10th)",
         place: "M.K.J. High School, Darbhanga",
-        desc: "Completed 10th with 79% marks.",
+        // desc: "Completed 10th with 60% marks.",
       },
     ],
     experience: [
+        {
+        year: "2025",
+        title: "Process Inspection Engineer",
+        place: "DBG Technology India Pvt ltd",
+        desc: "Monitored manufacturing processes, performed in-line inspections, identified defects, and ensured quality standards in mobile production."
+
+      },
       {
         year: "2024",
         title: "Virtual Internship",
         place: "Cisco Networking Academy",
         desc: "Completed virtual internships in Networking and Cybersecurity.",
-      },
-      {
-        year: "2025",
-        title: "NSS Coordinator",
-        place: "National Service Scheme, OIST Bhopal",
-        desc: "Organized community service and campus initiatives.",
-      },
+      }
     ],
     technical: [
       {
         year: "2023 - 2025",
         title: "Tech Stack",
-        place: "Frontend & Backend Development",
-        desc: "React, Node.js, Express.js, MySQL, Java, Arduino projects.",
+        place: "Frontend",
+        desc: "HTML, CSS, Tailwind CSS, javascript, React, MySQL, Java, Arduino projects.",
       },
       {
         year: "2024",
         title: "Certifications",
-        place: "Cisco | Coursera | LinkedIn Learning",
+        place: "Cisco | Coursera ",
         desc: "Completed multiple courses in Networking, Web Dev, and IoT.",
       },
     ],
@@ -68,10 +69,10 @@ const JourneyTimeline = () => {
         desc: "Built a calculator with billing and print functionality.",
       },
       {
-        year: "2023",
-        title: "Heart Rate Monitoring System",
+        year: "2025",
+        title: "IoT-Based Water Level Monitoring System and Predicting usage Time",
         place: "Arduino Project",
-        desc: "Designed IoT system for health monitoring.",
+        desc: "Designed and implemented an IoT-based water tank monitoring system using Arduino and level sensors to measure real-time water levels and estimate remaining usage time based on consumption patterns, enabling smarter water resource management.",
       },
     ],
   };

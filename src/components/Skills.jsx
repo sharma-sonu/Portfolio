@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "React.js", level: 90 },
-  { name: "JavaScript (ES6+)", level: 85 },
-  { name: "Tailwind CSS", level: 90 },
-  { name: "Node.js & Express.js", level: 80 },
+  { name: "HTML", level: 90 },
+  { name: "CSS", level: 80 },
+  { name: "Javascript", level: 75 },
+  { name: "React", level: 70 },
   { name: "MySQL", level: 75 },
   { name: "Java (OOPs)", level: 70 },
   { name: "Arduino & IoT", level: 80 },
